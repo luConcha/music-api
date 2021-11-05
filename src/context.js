@@ -11,16 +11,13 @@ const AppProvider = ({ children }) => {
   const [error, setError] = useState({ show: false, msg: '' });
   const [artist, setArtist] = useState('avril lavigne');
   const [url, setURL] = useState('https://genius.p.rapidapi.com/search');
-  const api_key = '3007d27694mshd6b4161ccca2a8dp1f69d8jsn317c805b559e';
-  //const { isLoading, error, data: songs } = useFech({ artist });
-  //console.log(artist);
   var options = {
     method: 'GET',
     url: url,
     params: { q: artist },
     headers: {
       'x-rapidapi-host': 'genius.p.rapidapi.com',
-      'x-rapidapi-key': api_key,
+      'x-rapidapi-key': process.env.REACT_APP_GENIUS_API_KEY,
     },
   };
 
