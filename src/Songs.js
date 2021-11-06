@@ -2,7 +2,7 @@ import React from 'react';
 import { useGlobalContext } from './context';
 
 const Songs = () => {
-  const { loading, error, hits } = useGlobalContext();
+  const { loading, hits } = useGlobalContext();
   return (
     <main>
       <div className='section-title'>
