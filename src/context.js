@@ -1,16 +1,16 @@
 import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
-//import useFech from './useFetch';
-
-//var axios = require('axios').default;
+//import useFetch from './useFetch';
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [hits, setHits] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ show: false, msg: '' });
-  const [artist, setArtist] = useState('avril lavigne');
+  const [artist, setArtist] = useState('Avril Lavigne');
   const [url, setURL] = useState('https://genius.p.rapidapi.com/search');
+  //const { data } = useFetch(artist);
+  //setHits(data);
   var options = {
     method: 'GET',
     url: url,
@@ -23,7 +23,6 @@ const AppProvider = ({ children }) => {
 
   const fetchData = async (options) => {
     setLoading(true);
-    console.log(options);
     const response = await axios(options).catch((err) => console.log(err));
     if (response) {
       const data = response.data.response.hits;

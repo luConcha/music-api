@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGlobalContext } from './context';
+import { Link } from 'react-router-dom';
 
 const Songs = () => {
   const { loading, hits } = useGlobalContext();
@@ -12,7 +13,6 @@ const Songs = () => {
         <div className='container'>
           {hits.map((songs, key) => {
             const { result } = hits[key];
-            console.log(result);
             return (
               <article className='card' key={key}>
                 <img
@@ -20,18 +20,9 @@ const Songs = () => {
                   alt={result.artist_names}
                 />
                 <h4>{result.title}</h4>
-                <a href={result.url} className='btn'>
-                  Lyrics
-                </a>
-
-                {/* <iframe
-                  id='player'
-                  type='text/html'
-                  width='640'
-                  height='360'
-                  src='http://www.youtube.com/embed/Bg59q4puhmg?enablejsapi=1'
-                  frameborder='0'
-                ></iframe> */}
+                <Link to={`/songs/${result.id}`} className='btn'>
+                  Details
+                </Link>
               </article>
             );
           })}

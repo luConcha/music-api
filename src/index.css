@@ -197,6 +197,19 @@ Pagination
   cursor: pointer;
 }
 
+.btnMedia {
+  padding: 0.35rem 0.75rem;
+  letter-spacing: 1.6px;
+  font-size: 0.75rem;
+  color: var(--clr-white);
+  background: var(--clr-red-light);
+  border-radius: var(--radius);
+  border-color: transparent;
+  text-transform: uppercase;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
 .btn-container {
   display: flex;
   justify-content: center;
@@ -287,4 +300,9 @@ Search
   text-transform: capitalize;
   padding-top: 0.5rem;
   letter-spacing: var(--spacing);
+}
+
+.info-margin {
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
