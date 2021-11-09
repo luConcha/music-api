@@ -50,6 +50,7 @@ const SingleSong = () => {
         <h1> {loading ? 'loading...' : 'Details'}</h1>
       </div>
       <div>
+        {error.show && <div className='error'>{error.msg}</div>}
         <div className='info-margin'>
           <Link to='/' className='btn'>
             Back Home
@@ -84,9 +85,10 @@ const SingleSong = () => {
               <div key={index} className='info-margin'>
                 <h4>{item.provider}</h4>
                 <iframe
+                  title={youtubeID}
                   width='560'
                   height='315'
-                  src={`http://www.youtube.com/embed/${youtubeID}`}
+                  src={`https://www.youtube.com/embed/${youtubeID}`}
                   frameBorder='0'
                   allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                   allowFullScreen
