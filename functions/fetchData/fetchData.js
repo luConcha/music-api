@@ -1,14 +1,12 @@
-const axios = requiere('axios');
-
-var axios = require('axios').default;
+const axios = require('axios');
 
 var options = {
   method: 'GET',
-  url: 'https://genius.p.rapidapi.com/search',
-  params: { q: 'Kendrick Lamar' },
+  url: url,
+  params: { q: artist },
   headers: {
     'x-rapidapi-host': 'genius.p.rapidapi.com',
-    'x-rapidapi-key': '3007d27694mshd6b4161ccca2a8dp1f69d8jsn317c805b559e',
+    'x-rapidapi-key': process.env.REACT_APP_GENIUS_API_KEY,
   },
 };
 

@@ -44,14 +44,26 @@ const SingleSong = () => {
     return <Loading />;
   }
 
+  let mediaItems = [...info.media];
+  let posYoutube = mediaItems.findIndex((x) => x.provider === 'youtube');
+  mediaItems.map((item, index) => {
+    if (index === 0 && item.provider !== 'youtube') {
+      mediaItems[index] = mediaItems[posYoutube];
+      mediaItems[posYoutube] = item;
+    } else {
+      return mediaItems;
+    }
+    return mediaItems;
+  });
+
   return (
     <section className='section'>
       <div className='section-title'>
         <h1> {loading ? 'loading...' : 'Details'}</h1>
       </div>
-      <div>
+      <div className='container'>
         {error.show && <div className='error'>{error.msg}</div>}
-        <div className='info-margin'>
+        <div>
           <Link to='/' className='btn'>
             Back Home
           </Link>
@@ -64,28 +76,20 @@ const SingleSong = () => {
           <h4>Title</h4>
           {info.title}
         </div>
-
-        {/* {info.description.dom.children.map((item, index) => {
-            console.log(item.children);
-            item.children.map((childItem, childIndex) => {
-              return <p key={childIndex}>{childItem}</p>;
-            });
-            return <p key={index}>{item.children}</p>;
-          })} */}
         <div className='info-margin'>
-          <h4>Lyrics</h4>
+          <h4>Read</h4>
           <a href={info.url} className='btnMedia'>
-            {info.url}
+            Lyrics
           </a>
         </div>
         <div className='info-margin'>
-          {info.media.map((item, index) => {
+          {mediaItems.map((item, index) => {
             var youtubeID = item.url.split('=')[1];
             return item.provider === 'youtube' ? (
               <div key={index} className='info-margin'>
-                <h4>{item.provider}</h4>
+                <h4>Watch Video</h4>
                 <iframe
-                  title={youtubeID}
+                  title={index}
                   width='560'
                   height='315'
                   src={`https://www.youtube.com/embed/${youtubeID}`}
@@ -96,9 +100,9 @@ const SingleSong = () => {
               </div>
             ) : (
               <div key={index} className='info-margin'>
-                <h4>{item.provider}</h4>
+                <h4>Listen on</h4>
                 <a href={item.url} className='btnMedia'>
-                  {item.url}
+                  {item.provider}
                 </a>
               </div>
             );
